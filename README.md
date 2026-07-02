@@ -1,272 +1,247 @@
 # 🏥 Healthcare Insurance Claim Fraud Detection
 
-An end-to-end Machine Learning project that detects potentially fraudulent healthcare insurance claims using an explainable XGBoost model. The system provides an interactive Streamlit dashboard for investigators to analyze claims, predict fraud risk, and monitor model performance.
+<p align="center">
+
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![XGBoost](https://img.shields.io/badge/XGBoost-Fraud%20Detection-orange)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Machine%20Learning-F7931E?logo=scikitlearn)
+![SHAP](https://img.shields.io/badge/Explainable%20AI-SHAP-success)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?logo=streamlit)
+
+</p>
+
+<p align="center">
+
+An end-to-end Explainable AI system that detects fraudulent healthcare insurance claims using Machine Learning, XGBoost, SHAP, and an interactive Streamlit dashboard.
+
+</p>
 
 ---
 
-## 📌 Project Overview
+# 📖 Overview
 
-Healthcare insurance fraud results in significant financial losses every year. Detecting fraudulent claims early helps insurers reduce unnecessary payouts and improve operational efficiency.
+Healthcare insurance fraud leads to billions of dollars in financial losses every year, making early fraud detection essential for insurers.
 
-This project develops an intelligent fraud detection system using machine learning techniques to classify healthcare claims as **Fraudulent** or **Genuine**.
+This project presents an **end-to-end fraud detection pipeline** that analyzes healthcare insurance claims, predicts fraudulent activity using machine learning, and explains every prediction using **SHAP Explainable AI**.
 
-The final solution includes:
-
-- Data preprocessing and feature engineering
-- Class imbalance handling using SMOTE
-- XGBoost-based fraud detection
-- Model evaluation using multiple metrics
-- SHAP explainability for model interpretation
-- Interactive Streamlit dashboard deployment
+Unlike traditional black-box models, the system not only predicts fraud but also provides interpretable explanations that help investigators understand *why* a claim was flagged.
 
 ---
 
-## 🎯 Objectives
+#  Problem Statement
 
-- Detect fraudulent healthcare insurance claims.
-- Minimize false investigations while maximizing fraud detection.
-- Handle highly imbalanced healthcare claim data.
-- Provide interpretable predictions for investigators.
-- Build an interactive dashboard for real-time claim investigation.
+Insurance providers process thousands of healthcare claims daily, making manual fraud investigation expensive and time-consuming.
+
+Key challenges include:
+
+- 🚨 Highly imbalanced fraud data
+- 🔍 Difficulty identifying suspicious claims
+- ⚖️ Need for explainable AI predictions
+- ⏳ Long investigation cycles
+- 💰 Financial losses due to fraudulent reimbursements
 
 ---
 
-## 📂 Project Structure
+# 💡 Solution
 
+The proposed solution combines Machine Learning and Explainable AI to automatically identify fraudulent healthcare claims.
+
+The system:
+
+- 📂 Processes healthcare claim records
+- 🧹 Cleans and preprocesses data
+- ⚖️ Balances classes using SMOTE
+- 🤖 Detects fraud using XGBoost
+- 📊 Explains predictions with SHAP
+- 📈 Displays insights through a Streamlit dashboard
+
+---
+
+# ✨ Key Features
+
+- 🏥 Healthcare Insurance Fraud Detection
+- 🤖 XGBoost Classification Model
+- ⚖️ SMOTE-based Class Balancing
+- 📊 Fraud Risk Prediction
+- 🧠 SHAP Explainability
+- 📈 Interactive Streamlit Dashboard
+- 📉 Performance Metrics Visualization
+- ⚡ Real-time Claim Prediction
+
+---
+
+# 🏗️ System Architecture
+
+```text
+Healthcare Claims Dataset
+          │
+          ▼
+Data Cleaning & Preprocessing
+          │
+          ▼
+Feature Engineering
+          │
+          ▼
+SMOTE Class Balancing
+          │
+          ▼
+XGBoost Fraud Detection Model
+          │
+          ▼
+SHAP Explainability Engine
+          │
+          ▼
+Interactive Streamlit Dashboard
 ```
+
+---
+
+# 🛠 Tech Stack
+
+| Category | Technologies |
+|-----------|--------------|
+| Programming Language | Python |
+| Machine Learning | Scikit-learn, XGBoost |
+| Explainable AI | SHAP |
+| Data Processing | Pandas, NumPy |
+| Visualization | Matplotlib |
+| Dashboard | Streamlit |
+| Model Serialization | Joblib |
+| Version Control | Git & GitHub |
+
+---
+
+# 📂 Project Structure
+
+```text
 Healthcare-Fraud-Detection/
-│
-├── app.py
-├── requirements.txt
-├── readme.md
-│
-├── models/
-│   ├── xgb_realistic.pkl
-│   └── encoders.pkl
-│
-├── dataset/
-│   └── healthcare_claims.csv
-│
-├── notebooks/
-│   └── fraud_detection.ipynb
-│
-└── assets/
+
+│── app.py
+│── requirements.txt
+│── models/
+│── dataset/
+│── notebooks/
+│── assets/
+│── README.md
 ```
 
 ---
 
-## 📊 Dataset Information
+# 📊 Dataset Overview
 
-The dataset contains **10,000 healthcare insurance claims** with the following features:
+The dataset contains **10,000 healthcare insurance claims** with demographic, provider, diagnosis, procedure, claim amount, insurance, and medical history information.
 
-| Feature | Description |
-|-----------|-------------|
-| Provider_ID | Provider identifier |
-| Claim_ID | Claim identifier |
-| Patient_Age | Age of patient |
-| Patient_Gender | Gender of patient |
-| Diagnosis_Code | Diagnosis code |
-| Procedure_Code | Medical procedure code |
-| Claim_Amount | Total claim amount |
-| Approved_Amount | Approved reimbursement amount |
-| Insurance_Type | Type of insurance |
-| Claim_Submission_Date | Claim submission date |
-| Days_Between_Service_and_Claim | Delay between service and claim |
-| Number_of_Claims_Per_Provider_Monthly | Provider activity level |
-| Provider_Specialty | Medical specialty |
-| Patient_State | State of patient |
-| Claim_Status | Claim processing status |
-| Is_Fraud | Target variable |
-| Length_of_Stay | Hospital stay duration |
-| Visit_Type | Emergency/Inpatient/Outpatient |
-| Chronic_Condition_Flag | Presence of chronic condition |
-| Prior_Visits_12m | Previous visits in 12 months |
+Important attributes include:
+
+- Claim Amount
+- Approved Amount
+- Insurance Type
+- Diagnosis Code
+- Provider Specialty
+- Visit Type
+- Patient State
+- Prior Visits
+- Length of Stay
+
+Target Variable:
+
+**Is_Fraud**
 
 ---
 
-## ⚙️ Data Preprocessing
+# ⚙️ Data Preprocessing
 
-The following preprocessing steps were performed:
+The preprocessing pipeline includes:
 
-### Missing Value Handling
+- Missing Value Handling
+- Date Feature Extraction
+- Label Encoding
+- Feature Engineering
+- Data Cleaning
+- Class Balancing using SMOTE
 
-Missing values were observed in:
-
-- Insurance_Type
-- Provider_Specialty
-- Prior_Visits_12m
-
-These were handled appropriately before training.
-
----
-
-### Feature Engineering
-
-Date features were extracted from Claim Submission Date:
-
-- Claim_Year
-- Claim_Month
-- Claim_Day
-- Claim_DayOfWeek
+Special attention was given to preventing **data leakage**, ensuring realistic model performance for deployment.
 
 ---
 
-### Categorical Encoding
+# 🤖 Machine Learning Pipeline
 
-Label Encoding was used for:
+Models Evaluated
 
-- Patient_Gender
-- Diagnosis_Code
-- Insurance_Type
-- Provider_Specialty
-- Patient_State
-- Visit_Type
+| Model | Purpose |
+|---------|----------|
+| Random Forest | Baseline Model |
+| XGBoost | Final Production Model |
 
-The encoders were saved for deployment.
+The XGBoost classifier was selected due to its superior performance and robustness on imbalanced healthcare data.
 
 ---
 
-### Class Imbalance Handling
-
-Original class distribution:
-
-| Class | Count |
-|---------|-------|
-| Genuine Claims | 9,171 |
-| Fraud Claims | 829 |
-
-Fraud Rate:
-
-```
-8.29%
-```
-
-SMOTE (Synthetic Minority Oversampling Technique) was applied to balance the training data.
-
----
-
-## 🤖 Machine Learning Models
-
-### 1. Random Forest
-
-Used as a baseline model.
-
-Performance:
-
-- ROC-AUC: 98.49%
-- Recall: 89%
-- F1 Score: 78%
-
----
-
-### 2. XGBoost (Final Model)
-
-The final model used:
-
-```python
-XGBClassifier(
-    n_estimators=200,
-    learning_rate=0.1,
-    max_depth=6,
-    colsample_bytree=0.8,
-    eval_metric='logloss'
-)
-```
-
----
-
-## 📈 Final Model Performance
-
-### XGBoost (Realistic Model)
+# 📈 Model Performance
 
 | Metric | Score |
 |----------|--------|
-| Precision | 91% |
-| Recall | 80% |
-| F1 Score | 85% |
-| ROC-AUC | 98.91% |
+| Precision | **91%** |
+| Recall | **80%** |
+| F1 Score | **85%** |
+| ROC-AUC | **98.91%** |
 
-Confusion Matrix:
+### Confusion Matrix
 
-```
+```text
 [[1821   13]
  [  34  132]]
 ```
 
 ---
 
-## 🔍 Explainability Using SHAP
+# 🧠 Explainable AI with SHAP
 
-SHAP (SHapley Additive exPlanations) was used to understand model predictions.
+To improve transparency, SHAP was integrated into the prediction pipeline.
 
-Key findings:
+The model explains each prediction by highlighting the contribution of individual features.
 
-### Most Influential Features
+Most influential features include:
 
-- Claim_Amount
-- Approved_Amount
-- Prior_Visits_12m
-- Visit_Type
-- Number_of_Claims_Per_Provider_Monthly
-- Insurance_Type
+- Claim Amount
+- Approved Amount
+- Prior Visits
+- Visit Type
+- Provider Activity
+- Insurance Type
 
-SHAP helped explain why a claim was flagged as fraudulent, improving trust and transparency.
-
----
-
-## 🚨 Leakage Detection
-
-During experimentation, two features showed potential data leakage:
-
-### Claim_Status
-
-Fraudulent claims had a significantly higher proportion of rejected claims.
-
-### Days_Between_Service_and_Claim
-
-This feature became highly dominant and unrealistically boosted performance.
-
-To improve real-world applicability:
-
-- Claim_Status was excluded.
-- Days_Between_Service_and_Claim was removed from the final realistic model.
+This enables investigators to understand why a claim was classified as fraudulent.
 
 ---
 
-## 🖥️ Streamlit Dashboard
+# ⚠️ Preventing Data Leakage
 
-The deployed dashboard contains three sections:
+During experimentation, two features produced unrealistically high accuracy:
 
-### Executive Dashboard
+- Claim Status
+- Days Between Service and Claim
 
-Displays:
+Since these features would not always be available during real-time prediction, they were excluded from the final production model to improve generalization.
+
+---
+
+# 🖥️ Dashboard Features
+
+### 📊 Executive Dashboard
 
 - Total Claims
-- Fraud Claims
 - Fraud Rate
 - ROC-AUC
+- Fraud Distribution
 
----
+### 🚨 Fraud Prediction
 
-### Fraud Prediction
+- Claim Risk Prediction
+- Fraud Probability
+- Risk Categorization
+- Real-time Inference
 
-Allows investigators to:
-
-- Enter claim details
-- Predict fraud probability
-- Assess risk levels
-
-Risk Categories:
-
-- Low Risk
-- Medium Risk
-- High Risk
-
----
-
-### Model Performance
-
-Displays:
+### 📈 Model Analytics
 
 - Precision
 - Recall
@@ -275,32 +250,63 @@ Displays:
 
 ---
 
+---
 
-## 📦 Requirements
+# 💼 Business Impact
 
-Major libraries used:
+The solution helps healthcare insurers by:
 
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- XGBoost
-- Imbalanced-learn
-- SHAP
-- Streamlit
-- Matplotlib
-- Joblib
+- 💰 Reducing financial losses
+- 🚨 Prioritizing suspicious claims
+- ⚡ Accelerating claim investigation
+- 🧠 Supporting investigators with explainable AI
+- 📈 Improving operational efficiency
 
 ---
 
-## 💼 Business Impact
+# 🚀 Future Enhancements
 
-This system can help healthcare organizations:
-
-- Reduce financial losses caused by fraud.
-- Prioritize suspicious claims for investigation.
-- Improve claim processing efficiency.
-- Support investigators with explainable AI insights.
-- Enhance trust in automated fraud detection systems.
+- Deep Learning Models
+- Graph Neural Networks for Fraud Detection
+- Real-time API Deployment
+- LLM-assisted Fraud Investigation
+- Cloud Deployment (AWS/Azure)
+- Continuous Model Retraining
+- Fraud Network Visualization
 
 ---
+
+# 🎯 Learning Outcomes
+
+Through this project, I gained practical experience in:
+
+- End-to-End Machine Learning Pipelines
+- Fraud Detection
+- Explainable AI (SHAP)
+- Handling Imbalanced Datasets
+- Feature Engineering
+- Data Leakage Prevention
+- Streamlit Dashboard Development
+- Model Deployment
+
+---
+
+# 👩‍💻 Author
+
+## Swetha Mandapuri
+
+**B.E. Artificial Intelligence & Machine Learning**  
+Chaitanya Bharathi Institute of Technology (CBIT), Hyderabad
+
+📧 Connect with me
+
+- GitHub: https://github.com/swetha630
+- LinkedIn: https://www.linkedin.com/in/swetha-mandapuri-3346042a3
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub!
+
+Your support motivates me to build more impactful AI-powered applications.
