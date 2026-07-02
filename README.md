@@ -111,20 +111,6 @@ Interactive Streamlit Dashboard
 
 ---
 
-# 📂 Project Structure
-
-```text
-Healthcare-Fraud-Detection/
-
-│── app.py
-│── requirements.txt
-│── models/
-│── dataset/
-│── notebooks/
-│── assets/
-│── README.md
-```
-
 ---
 
 # 📊 Dataset Overview
